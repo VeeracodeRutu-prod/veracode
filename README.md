@@ -1,6 +1,67 @@
-# Veracode GitHub App  
+veracode_static_scan:
+  push:
+    trigger: true
+    branches_to_run:
+      - '*'
+    branches_to_exclude:
+  pull_request:
+    trigger: true
+    action:
+      - opened
+      - synchronize
+    target_branch:
+      - default_branch
+  analysis_on_platform: false
+  break_build_policy_findings: true
+  break_build_invalid_policy: true
+  break_build_on_error: false
+  error_message: "Veracode static scan faced a problem. Please contact your Veracode administrator for more information."
+  policy: 'Veracode Recommended Medium + SCA'
+  create_code_scanning_alert: false
+  create_issue: false
+  issues:
+    trigger: false
+    commands:
+      - "Veracode Static Scan"
 
-This repository includes the default workflows that are required for the Veracode GitHub app to function correctly. In addtion it includes the configuration file (veracode.yml).  
+veracode_sca_scan:
+  push:
+    trigger: true
+    branches_to_run:
+      - '*'
+    branches_to_exclude:
+  pull_request:
+    trigger: true
+    action:
+      - opened
+      - synchronize
+    target_branch:
+      - default_branch
+  break_build_on_error: true
+  break_build_policy_findings: true
+  error_message: "Veracode SCA scan faced a problem. Please contact your Veracode administrator for more information."
+  issues:
+    trigger: false
+    commands:
+      - "Veracode SCA Scan"
 
-Clone this repository to your own GitHub org and name it `veracode`, that is the repository the Veracode GitHub app will pick up the workflows and configration from.   
- 
+veracode_iac_secrets_scan:
+  push: 
+    trigger: true
+    branches_to_run:
+      - '*'
+    branches_to_exclude:
+  pull_request:
+    trigger: true
+    action:
+      - opened
+      - synchronize
+    target_branch:
+      - default_branch
+  break_build_policy_findings: true
+  break_build_on_error: true
+  error_message: "Veracode IAC secrets scan faced a problem. Please contact your Veracode administrator for more information."
+  issues:
+    trigger: false
+    commands:
+      - "Veracode IAC Scan"
