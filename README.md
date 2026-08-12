@@ -7,7 +7,7 @@ veracode_static_scan:
   pull_request:
     trigger: true
     action:
-      - opened
+      - opened 
       - synchronize
     target_branch:
       - default_branch
