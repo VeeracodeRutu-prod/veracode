@@ -1,1 +1,21 @@
 
+version: 1.0
+
+policy_scan:
+  enabled: true
+  policy_name: "Veracode Recommended Medium + SCA Indirect Findings"
+  teams: ""
+  business_criticality: "High"
+
+pipeline_scan:
+  enabled: true
+  fail_build: true
+  timeout: 60
+
+sca_scan:
+  enabled: true
+  fail_build: false
+
+iac_and_secrets_scan:
+  enabled: true
+  fail_build: false
