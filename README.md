@@ -3,15 +3,19 @@ veracode_static_scan:
     trigger: true
     branches_to_run:
       - '*'
-    branches_to_exclude: 
-  pull_request:
+    branches_to_exclude:
+  pull_request: 
     trigger: true
     action:
-      - opened 
+      - opened
       - synchronize
     target_branch:
       - default_branch
-  analysis_on_platform: false
+
+  # ✅ Must be TRUE to enable Sandbox + Policy scans
+  # ⚠️ Only works on Pull Request trigger — NOT on direct push
+  analysis_on_platform: true
+
   break_build_policy_findings: true
   break_build_invalid_policy: true
   break_build_on_error: false
@@ -46,7 +50,7 @@ veracode_sca_scan:
       - "Veracode SCA Scan"
 
 veracode_iac_secrets_scan:
-  push: 
+  push:
     trigger: true
     branches_to_run:
       - '*'
