@@ -3,7 +3,7 @@ veracode_static_scan:
     trigger: true
     branches_to_run:
       - '*'
-    branches_to_exclude:
+    branches_to_exclude: 
   pull_request:
     trigger: true
     action:
